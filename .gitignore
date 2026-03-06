@@ -51,3 +51,6 @@ package.json
 /man/
 /share/
 /src/
+
+# ignore Zone.Identifier files
+**/*Zone.Identifier
