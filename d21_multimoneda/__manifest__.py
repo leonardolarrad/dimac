@@ -29,8 +29,9 @@
 
 {
     'name': 'DIMAC21 Multi-Moneda',
-    'version': '18.0.1.0.0',
+    'version': '19.0.1.0.0',
     'summary': 'Multi-currency switcher in the backend navbar',
+    'author': 'Soluciones DIMAC 21, C.A.',
     'description': 'Allows users to switch between currencies (USD, VES) in the backend, similar to the multi-company switcher.',
     'category': 'Tools',
     'depends': ['web'],
