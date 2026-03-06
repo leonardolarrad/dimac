@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="base.VES" model="res.currency">
+            <field name="active" eval="True"/>
+            <field name="currency_unit_label">Bolívares</field>
+            <field name="symbol">Bs.</field>
+            <field name="position">before</field>
+        </record>
+    </data>
+</odoo>

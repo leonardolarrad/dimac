@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+<t t-name="d21_multimoneda.SwitchCurrencyMenu">
+    <div class="o_switch_currency_menu d-none d-md-block">
+        <DropdownGroup group="'web-navbar-group'">
+            <Dropdown
+                position="'bottom-end'"
+                menuRef="containerRef"
+                state="this.dropdown"
+                onStateChanged.bind="handleDropdownChange"
+                navigationOptions="navigationOptions"
+                menuClass="'o_switch_currency_menu_dropdown'"
+                disabled="isSingleCurrency"
+            >
+                <button t-att-disabled="isSingleCurrency" 
+                        t-att-title="currencyService.formattedCodes">
+                    <i class="fa fa-money d-lg-none"/>
+                    <span class="oe_topbar_name d-none d-lg-block text-truncate" 
+                        t-esc="currencyService.formattedCodes"/>
+                </button>
+
+                <t t-set-slot="content">
+                    <t t-call="d21_multimoneda.SwitchCurrencyMenu.Items"/>
+                </t>
+            </Dropdown>
+        </DropdownGroup>
+    </div>
+</t>
+
+<t t-name="d21_multimoneda.SwitchCurrencyMenu.Items">
+    <div class="o_switch_currency_menu_items">
+        <t t-foreach="currenciesEntries" t-as="entry" t-key="entry.currency.id">
+            <SwitchCurrencyItem currency="entry.currency"/>
+        </t>
+    </div>
+
+    <div t-if="currencySelector.hasSelectionChanged" class="o_switch_currency_menu_buttons d-flex justify-content-end gap-2 px-2 pt-2">
+        <button
+            class="btn btn-primary o-navigable flex-grow-1 text-center"
+            t-on-click="() => this.confirm()"
+        >
+            Confirm
+        </button>
+        <button
+            class="btn btn-secondary o-navigable flex-grow-1 text-center"
+            t-on-click="() => currencySelector.reset()"
+        >
+            Reset
+        </button>
+    </div>
+</t>
+
+</templates>
