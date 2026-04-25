@@ -1,0 +1,15 @@
+// = Fondo del Home Menu D21
+// Gradiente suave y profesional que se aplica cuando el HomeMenu está activo.
+// ============================================================================
+.o_home_menu_background, .o_web_client.o_home_menu_background {
+    background: {
+        size: cover;
+        attachment: fixed;
+        color: var(--homeMenu-bg-color, #{$o-gray-200});
+        // Gradiente sutil profesional en lugar de imagen Enterprise
+        image: var(
+            --homeMenu-bg-image,
+            linear-gradient(135deg, #{lighten($o-gray-100, 2%)} 0%, #{$o-gray-200} 50%, #{lighten($o-gray-300, 5%)} 100%)
+        );
+    }
+}

@@ -1,0 +1,98 @@
+// = Estilos del Home Menu D21
+// Grid de aplicaciones con iconos, sombras y efectos hover tipo Enterprise.
+// ============================================================================
+
+// Cuando el fondo del home menu está activo, la navbar se hace transparente
+.o_home_menu_background {
+    &:not(.o_home_menu_background_custom) .o_main_navbar {
+        background: transparent;
+        border-bottom-color: transparent;
+
+        .o_dropdown_active,
+        > ul > li.show > a {
+            outline: none;
+        }
+    }
+
+    .o_menu_systray {
+        @include print-variable(o-navbar-badge-bg, $o-navbar-badge-bg);
+    }
+}
+
+.o_home_menu {
+    font-size: $font-size-base;
+    scrollbar-color: #{rgba($body-color, .5)} transparent;
+
+    &::-webkit-scrollbar {
+        width: map-get($spacers, 2);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #{rgba($body-color, .5)};
+        border-radius: $border-radius-pill;
+    }
+
+    .container {
+        @include media-breakpoint-up(md) {
+            max-width: $o-home-menu-container-size !important;
+        }
+    }
+
+    .o_app {
+        text-decoration: none;
+
+        .o_app_icon {
+            width: $o-home-menu-app-icon-max-width;
+            aspect-ratio: 1;
+            padding: $o-home-menu-app-icon-padding;
+            background-color: var(--AppSwitcherIcon-background, #{$o-home-menu-app-icon-background-color});
+            object-fit: cover;
+            transform-origin: center bottom;
+            transition: box-shadow ease-in 0.1s, transform ease-in 0.1s;
+            box-shadow: var(--AppSwitcherIcon-inset-shadow, inset 0 0 0 1px rgba(0,0,0, .2)),
+                0 1px 1px rgba(#000, .02),
+                0 2px 2px rgba(#000, .02),
+                0 4px 4px rgba(#000, .02),
+                0 8px 8px rgba(#000, .02),
+                0 16px 16px rgba(#000, .02);
+
+            .fa {
+                font-size: $o-home-menu-app-icon-max-width * 0.5;
+            }
+        }
+
+        &:hover .o_app_icon {
+            box-shadow: var(--AppSwitcherIcon-inset-shadow, inset 0 0 0 1px rgba(0,0,0, .2)),
+                0 2px 2px rgba(#000, .03),
+                0 4px 4px rgba(#000, .03),
+                0 8px 8px rgba(#000, .03),
+                0 12px 12px rgba(#000, .03),
+                0 24px 24px rgba(#000, .03);
+            transform: translateY(-2px);
+        }
+
+        &:active .o_app_icon {
+            transform: translateY(-2px) scale(.98);
+            transition: none;
+        }
+
+        .o_caption {
+            color: var(--homeMenuCaption-color, #{$o-home-menu-caption-color});
+            text-shadow: $o-home-menu-caption-shadow;
+        }
+
+        &.o_focused {
+            background: $component-active-bg;
+            outline: 1px solid $o-action;
+            border-radius: $border-radius;
+        }
+    }
+
+    // Responsive: fuente más grande en móvil
+    @include media-breakpoint-down(md) {
+        .o_caption {
+            font-size: $font-size-sm;
+            font-weight: $font-weight-bold;
+        }
+    }
+}

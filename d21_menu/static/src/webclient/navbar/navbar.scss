@@ -1,0 +1,24 @@
+// = Estilos de la Navbar D21 (estilo Enterprise)
+// Sobreescribe los estilos de la navbar para reflejar el diseño Enterprise:
+// CSS custom properties para hover/active en grises, color del toggle,
+// y visibilidad correcta del icono SVG grid.
+// ============================================================================
+.o_main_navbar {
+    --NavBar-entry-color--active: #{$o-component-active-color};
+    --NavBar-entry-borderColor-active: #{$o-component-active-border};
+    --NavBar-entry-backgroundColor--active: #{$o-component-active-bg};
+    --NavBar-entry-backgroundColor--hover: #{$o-gray-200};
+    --NavBar-entry-backgroundColor--focus: #{$o-gray-200};
+
+    --Dropdown_menu-margin-y: #{map-get($spacers, 1)};
+
+    // Color del icono de toggle (grid 3x3)
+    .o_menu_toggle {
+        color: var(--NavBar-menuToggle-color, #{$o-brand-odoo});
+    }
+}
+
+// Superuser design fix
+body.o_is_superuser .o_menu_systray {
+    border-image-outset: map-get($border-widths, 5);
+}
